@@ -1,0 +1,27 @@
+﻿@model Gallery.Models.Post
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+        <dt class="col-sm-2">
+            <img src="/Images/Get?PostId=@Model.PostId&fileName=@Model.Images.FirstOrDefault().FileName" alt="@Model.Images" width="300" height="300">
+        </dt>
+       
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

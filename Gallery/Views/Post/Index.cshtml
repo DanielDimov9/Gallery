@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Gallery.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div>
+
+    <table class="table">
+        <thead style="text-align:center">
+            <tr>
+                <th>
+                    <h1>Catstagram</h1>
+
+                    <p>
+                        <a asp-action="Create">Create Post</a>
+                        @ViewBag.username
+                    </p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Post Post in Model)
+            {
+                <tr>
+                    <td style="padding-bottom: 0px;">
+                     
+                        @if (Post.Images.Any())
+                        {
+                            <a asp-action="Details" asp-route-id="@Post.PostId"><img src="Images/Get?PostId=@Post.PostId&fileName=@Post.Images.First().FileName" alt="~/Images/OIP.jpg" width="300" height="300" /></a>
+                        }
+                        else
+                        {
+                            <img src="/images/OI.jpg" alt="image not found" width="50" height="50">
+                        }
+                        <div style="text-align:right; font-style:italic; font-size:10px">
+                           
+                        </div>
+                    </td>
+                </tr>
+             
+                <tr>
+                    <td style="border-top: 0px; padding-top: 0px;">
+                       
+                        
+                        <p>
+                            <a asp-action="Details" asp-route-id="@Post.PostId">Details</a>
+                            <a asp-action="Delete" asp-route-id="@Post.PostId">Delete</a>
+                        </p>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
